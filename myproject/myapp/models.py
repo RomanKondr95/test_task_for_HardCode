@@ -11,6 +11,10 @@ class Lesson(models.Model):
     duraton = models.IntegerField()
     products = models.ManyToManyField(Product,related_name='lessons')
 
+class Access(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
 class LessonView(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     lesson = models.ForeignKey(Lesson,on_delete=models.CASCADE)
